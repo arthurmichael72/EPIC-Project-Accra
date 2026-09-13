@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accra's Team Plan — Child-Friendly Version</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Same palette as the EPIC child-friendly poster, so the two read as one family */
+  --ink:#12333A; --ink-2:#2A5C63; --ink-3:#5C7F84;
+  --cream:#F3F0E3; --cream-2:#FAF8EF;
+  --sage:#D3DFD1; --mint:#CDEDEA; --mint-2:#B9E8E8;
+  --teal:#2F9E96; --teal-deep:#17726C;
+  --orange:#E4692F; --orange-2:#FC9F5B;
+  --sun:#F5C84C; --coral:#EF6F6C; --sky:#4EA8DE;
+  --plum:#8E6FB5; --green:#57B95C; --green-2:#3E9E52; --pink:#D96BA0;
+  --sand:#F2DFAE;
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --W:900px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{overflow-x:hidden}
+body{
+  background:var(--cream);
+  overflow-x:hidden;
+  font-family:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  display:flex; justify-content:center;
+}
+#fit{width:var(--W)}
+.poster{width:var(--W);background:var(--cream);overflow:hidden;position:relative}
+
+/* ---------- shared type ---------- */
+.band{position:relative;padding:44px 56px}
+.band.tight{padding:36px 56px}
+h2.sec{
+  font-size:30px;font-weight:800;letter-spacing:-.4px;line-height:1.15;
+  margin:0 0 8px;text-align:center;
+}
+p.lede{
+  font-size:16px;line-height:1.5;font-weight:400;color:var(--ink-2);
+  margin:0 auto 26px;text-align:center;max-width:640px;
+}
+.kicker{
+  font-size:16px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+  text-align:center;color:var(--teal);margin:0 0 10px;
+}
+.rule{width:64px;height:5px;border-radius:3px;background:var(--orange);margin:0 auto 22px}
+
+/* ---------- header ---------- */
+.hdr{background:var(--mint-2);padding:0;height:450px;position:relative}
+.hdr svg.scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hdr .plate{position:absolute;top:24px;left:50%;transform:translateX(-50%);width:640px;text-align:center;z-index:2}
+.sign{
+  background:var(--orange);border-radius:10px;padding:20px 26px 22px;
+  box-shadow:0 6px 0 rgba(0,0,0,.13);
+}
+.sign h1{
+  margin:0;color:#fff;font-size:44px;font-weight:800;line-height:1.02;letter-spacing:-1px;
+  text-shadow:0 2px 0 rgba(0,0,0,.12);
+}
+.sign .acr{
+  margin:9px 0 0;color:#FFE7D8;font-size:13px;font-weight:600;letter-spacing:1.3px;
+  text-transform:uppercase;line-height:1.45;
+}
+.subplate{
+  margin:16px auto 0;background:var(--cream-2);border-radius:8px;padding:12px 22px;width:596px;
+  box-shadow:0 4px 0 rgba(0,0,0,.09);
+  display:flex;align-items:center;gap:18px;text-align:left;
+}
+.subplate p{margin:0;font-size:14.5px;font-weight:500;line-height:1.45;color:var(--ink-2)}
+.logo{display:block;color:#494949;object-fit:contain}
+.subplate .logo{flex:0 0 66px;width:66px;height:63px}
+.subplate .divider{flex:0 0 2px;align-self:stretch;background:var(--sage);border-radius:1px}
+
+/* ---------- fact strip ---------- */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.fact{background:#fff;border-radius:14px;padding:20px 12px 18px;text-align:center;box-shadow:0 3px 0 rgba(18,51,58,.09)}
+.fact .num{font-size:52px;font-weight:800;line-height:.92;letter-spacing:-2px;color:var(--ink)}
+.fact .lbl{margin-top:9px;font-size:11.5px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:var(--teal-deep);line-height:1.35}
+.fact .sub{margin-top:5px;font-size:11px;font-weight:400;color:var(--ink-3);line-height:1.35}
+.flags{display:flex;gap:6px;justify-content:center;margin-top:8px}
+
+/* ---------- two explainer cards ---------- */
+.explain{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.exp{background:var(--cream-2);border-radius:18px;padding:24px 24px 22px;box-shadow:0 3px 0 rgba(18,51,58,.09)}
+.exp .disc{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;color:#fff;margin-bottom:14px}
+.exp h3{margin:0 0 8px;font-size:19px;font-weight:800;line-height:1.2}
+.exp p{margin:0 0 9px;font-size:13.5px;line-height:1.55;color:var(--ink-2)}
+.exp p:last-child{margin-bottom:0}
+.exp p b{color:var(--ink)}
+
+/* ---------- goals / needs grids ---------- */
+.goals{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.goal{background:#fff;border-radius:16px;padding:24px 20px 22px;text-align:center;box-shadow:0 3px 0 rgba(18,51,58,.09)}
+.goal .disc{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;margin:0 auto 14px;color:#fff}
+.goal h3{margin:0 0 6px;font-size:17px;font-weight:800}
+.goal p{margin:0;font-size:13.5px;line-height:1.5;color:var(--ink-2)}
+.goal b{font-weight:700;color:var(--ink)}
+
+.needs{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.need{
+  background:var(--cream-2);border-radius:16px;padding:20px 18px;
+  display:flex;gap:14px;align-items:flex-start;box-shadow:0 3px 0 rgba(18,51,58,.08);
+}
+.need .disc{
+  flex:0 0 46px;width:46px;height:46px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;
+}
+.need h3{margin:2px 0 4px;font-size:15px;font-weight:700;line-height:1.2}
+.need p{margin:0;font-size:12.5px;line-height:1.45;color:var(--ink-3)}
+
+/* ---------- ring ---------- */
+.ringwrap{position:relative}
+#ring{display:block;width:100%;height:auto;overflow:visible}
+.node-g{cursor:pointer}
+.node-c{transition:transform 220ms var(--ease-out)}
+.pill-bg{fill:#fff}
+.pill-t{font-size:12.5px;font-weight:700;fill:var(--ink)}
+.spoke{stroke-linecap:round;fill:none}
+.ring-cap{
+  margin:8px auto 0;max-width:640px;text-align:center;font-size:14px;line-height:1.5;
+  color:var(--ink-2);min-height:44px;font-weight:500;
+}
+.ring-cap b{font-weight:700;color:var(--ink)}
+
+/* ---------- zone blocks ---------- */
+.zhead{display:flex;align-items:center;gap:15px;max-width:640px;margin:0 auto 14px}
+.znum{
+  flex:0 0 56px;width:56px;height:56px;border-radius:17px;display:grid;place-items:center;
+  color:#fff;font-size:27px;font-weight:800;box-shadow:0 3px 0 rgba(18,51,58,.14);
+}
+.zdisc{flex:0 0 54px;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;color:#fff}
+.ztitle h3{margin:0;font-size:24px;font-weight:800;letter-spacing:-.5px;line-height:1.14}
+.ztitle p{margin:4px 0 0;font-size:11px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase}
+.zlede{text-align:center;font-size:16.5px;font-weight:600;line-height:1.45;margin:0 auto 22px;max-width:620px;color:var(--ink-2)}
+.acts{display:grid;gap:14px}
+.acts.c2{grid-template-columns:repeat(2,1fr)}
+.acts.c3{grid-template-columns:repeat(3,1fr)}
+.actc{background:#fff;border-radius:16px;padding:17px 18px 16px;box-shadow:0 3px 0 rgba(18,51,58,.09);border-top:5px solid}
+.actc .disc{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;margin-bottom:11px}
+.actc h4{margin:0 0 5px;font-size:14.5px;font-weight:700;line-height:1.25}
+.actc p{margin:0;font-size:12.5px;line-height:1.5;color:var(--ink-3)}
+
+/* ---------- the big idea (teal) ---------- */
+.you{background:var(--teal);color:#fff}
+.you h2.sec{color:#fff}
+.you .kicker{color:#CFF3EF}
+.quote{
+  text-align:center;font-size:26px;font-weight:700;line-height:1.3;letter-spacing:-.3px;
+  max-width:720px;margin:0 auto 26px;
+}
+.quote em{font-style:normal;color:var(--sun)}
+.ypts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ypt{background:rgba(255,255,255,.13);border-radius:14px;padding:18px 20px;text-align:center}
+.ypt .disc{width:44px;height:44px;border-radius:50%;background:var(--sun);color:var(--ink);display:grid;place-items:center;margin:0 auto 11px}
+.ypt h4{margin:0 0 5px;font-size:14.5px;font-weight:700}
+.ypt p{margin:0;font-size:12.5px;line-height:1.45;color:#DFF4F1}
+
+/* ---------- city (three.js) ---------- */
+.big{background:var(--ink);color:#fff;padding:44px 56px 30px;position:relative;overflow:hidden}
+.big h2.sec{color:#fff}
+.big p.lede{color:#9EBEC2}
+.cityscape{position:relative;height:340px;margin:0 -16px}
+#city3d{position:absolute;inset:0;width:100%;height:100%;display:block}
+#cityFallback{position:absolute;inset:0;width:100%;height:100%}
+.blocklegend{display:flex;flex-wrap:wrap;gap:8px 14px;justify-content:center;margin-top:6px}
+.blocklegend span{font-size:11px;font-weight:600;color:#B7D3D6;display:flex;align-items:center;gap:6px}
+.blocklegend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.bigline{
+  text-align:center;font-size:17px;line-height:1.5;font-weight:500;color:#CFE6E8;
+  max-width:680px;margin:14px auto 0;
+}
+.bigline b{color:var(--sun);font-weight:700}
+
+/* ---------- cta ---------- */
+.cta{background:var(--orange);color:#fff;text-align:center;padding:40px 56px 36px;position:relative;overflow:hidden}
+.cta h2{margin:0 0 8px;font-size:38px;font-weight:800;line-height:1.08;letter-spacing:-1px;text-shadow:0 2px 0 rgba(0,0,0,.1)}
+.cta .sub{margin:0;font-size:18px;font-weight:600;color:#FFE2D2}
+
+/* ---------- partners ---------- */
+/* One white plate rather than five tiles. The five files ship with very
+   different amounts of baked-in padding (NIHR is ~80% whitespace vertically,
+   CLCD ~64%) and very different lockups (an 8.7:1 wordmark beside 1:1 marks),
+   so any equal-tile grid renders some logos at a third the optical size of
+   others. Each logo instead sits in a box clipped to its own artwork and sized
+   so every mark lands at a comparable ink height. All five files centre their
+   artwork, so a plain centre-crop is exact. The plate also neutralises the
+   different backgrounds the logos arrive on (NIHR white, UCL a dark box with
+   the letters knocked out). */
+.funding{
+  max-width:706px;margin:20px auto 0;text-align:center;
+  font-size:11px;line-height:1.65;color:var(--ink-3);
+}
+.partners{
+  background:#fff;border-radius:16px;box-shadow:0 3px 0 rgba(18,51,58,.09);
+  padding:24px 30px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+/* absolute centring, not grid place-items: once the image is wider than its
+   box the grid column sizes to max-content and the crop falls off the left */
+.plogo{position:relative;overflow:hidden;flex:0 0 auto;display:block}
+.plogo img{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  display:block;width:auto;max-width:none;
+}
+/* box = the artwork's own bounds; img height = the file height that puts the
+   artwork at that size. Where the two differ, the file carries padding. */
+.p-ucl   {width:143px;height:42px}  .p-ucl    img{height:42px}
+.p-nihr  {width:200px;height:23px}  .p-nihr   img{height:116px}
+.p-flacso{width:42px; height:62px}  .p-flacso img{height:63px}
+.p-clcd  {width:47px; height:62px}  .p-clcd   img{height:104px}
+
+/* ---------- source ---------- */
+.src{background:#fff;padding:16px 56px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.src p{margin:0;font-size:10.5px;line-height:1.5;color:var(--ink-3)}
+.src b{color:var(--ink-2);font-weight:700}
+.badge{flex:0 0 auto;display:flex;align-items:center;gap:12px;border:2px solid var(--sage);border-radius:10px;padding:9px 15px}
+.badge .logo{width:113px;height:107px}
+.badge span{font-size:10px;font-weight:800;letter-spacing:1.4px;line-height:1.3;color:var(--teal-deep)}
+
+/* ---------- big-word tooltips ---------- */
+.gloss{
+  position:relative;cursor:help;
+  border-bottom:2px dotted var(--orange);
+}
+.gloss::after,.gloss::before{
+  opacity:0;pointer-events:none;
+  transition:opacity 150ms var(--ease-out),transform 150ms var(--ease-out);
+}
+.gloss::after{
+  content:attr(data-tip);
+  position:absolute;left:50%;bottom:calc(100% + 12px);
+  transform:translateX(-50%) translateY(5px);
+  width:236px;
+  background:var(--ink);color:#fff;
+  font-family:'Poppins',system-ui,sans-serif;
+  font-size:12.5px;line-height:1.45;font-weight:500;font-style:normal;
+  text-align:left;text-transform:none;letter-spacing:0;
+  padding:10px 13px;border-radius:10px;
+  box-shadow:0 8px 22px rgba(18,51,58,.3);
+  z-index:60;
+}
+.gloss::before{
+  content:"";
+  position:absolute;left:50%;bottom:calc(100% + 6px);
+  transform:translateX(-50%) translateY(5px);
+  border:6px solid transparent;border-top-color:var(--ink);
+  z-index:61;
+}
+.gloss:hover::after,.gloss:hover::before,
+.gloss:focus::after,.gloss:focus::before{
+  opacity:1;transform:translateX(-50%) translateY(0);
+}
+.gloss:focus{outline:none}
+.gloss:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:3px}
+.you .gloss,.big .gloss{border-bottom-color:var(--sun)}
+
+/* ---------- motion ---------- */
+.reveal{opacity:0;transform:translateY(14px)}
+.shown{opacity:1;transform:none;transition:opacity 420ms var(--ease-out),transform 420ms var(--ease-out)}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none}
+  .shown{transition:none}
+}
+@media print{
+  body{background:#fff}
+  #fit{zoom:1!important}
+  .reveal{opacity:1!important;transform:none!important}
+  /* hover cannot happen on paper — drop the cue and the tooltip */
+  .gloss{border-bottom:none}
+  .gloss::after,.gloss::before{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ ICON LIBRARY — authored on a 24x24 grid ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <!-- the lobes peak near y=6.1, so the glyph's own centre is ~1 unit low in the 24 grid -->
+  <g id="i-heart" transform="translate(0 -1)"><path d="M12 20s-7-4.6-7-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7 2.6C19 15.4 12 20 12 20Z"/></g>
+  <g id="i-child"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20.5c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2"/></g>
+  <g id="i-family"><circle cx="8" cy="7.6" r="2.8"/><circle cx="16.6" cy="9" r="2.2"/><path d="M3.4 19.6c0-2.9 2.1-5 4.6-5s4.6 2.1 4.6 5"/><path d="M14 19.6c0-2.3 1.2-3.9 2.9-3.9s2.9 1.6 2.9 3.9"/></g>
+  <g id="i-people"><circle cx="12" cy="6.6" r="2.6"/><circle cx="5" cy="10.4" r="2.2"/><circle cx="19" cy="10.4" r="2.2"/><path d="M7.4 18.4c0-2.6 2-4.5 4.6-4.5s4.6 1.9 4.6 4.5"/><path d="M2 19.6c0-2.1 1.4-3.6 3.2-3.6"/><path d="M22 19.6c0-2.1-1.4-3.6-3.2-3.6"/></g>
+  <g id="i-gov"><path d="M3.5 9.6 12 4.4l8.5 5.2"/><path d="M5.5 10.6V18M10 10.6V18M14 10.6V18M18.5 10.6V18"/><path d="M3.5 20.6h17"/></g>
+  <g id="i-teacher"><path d="M3 8.4 12 4.2l9 4.2-9 4.2Z"/><path d="M7 10.6v4.6c0 1.6 2.4 2.8 5 2.8s5-1.2 5-2.8v-4.6"/><path d="M21 8.4V14"/></g>
+  <g id="i-stetho"><path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M6 3H4.4M14 3h1.6"/><path d="M10 12v2.6a4.4 4.4 0 0 0 8.8 0V13"/><circle cx="18.8" cy="11" r="2"/></g>
+  <g id="i-house"><path d="M4 11.2 12 4l8 7.2"/><path d="M6 10.5V20h12v-9.5"/><path d="M10 20v-5h4v5"/></g>
+  <g id="i-town"><path d="M3 20.6h18"/><path d="M5 20.6V9.4l5-3.6v14.8"/><path d="M10 20.6V11l6 2.6v7"/><path d="M16 20.6v-4.2l3 1.2v3"/><path d="M7.2 12.2h.6M7.2 15.4h.6M12.4 15.2h.8"/></g>
+  <g id="i-shield"><path d="M12 3.2 19 6v5.5c0 4.4-3 7.4-7 9.3-4-1.9-7-4.9-7-9.3V6Z"/><path d="m9.2 12.1 2 2 3.6-3.9"/></g>
+  <g id="i-hands"><path d="M12 20.4S4.5 16 4.5 10.6A3.9 3.9 0 0 1 12 8.6a3.9 3.9 0 0 1 7.5 2c0 5.4-7.5 9.8-7.5 9.8Z"/><path d="M12 8.6v11.8"/></g>
+  <g id="i-spark"><path d="M12 3.2 13.9 9l5.9 1.9-5.9 1.9L12 18.7l-1.9-5.9L4.2 10.9 10.1 9Z"/></g>
+  <g id="i-mic"><rect x="9.2" y="3" width="5.6" height="10.4" rx="2.8"/><path d="M5.6 11.6a6.4 6.4 0 0 0 12.8 0"/><path d="M12 18v3M8.8 21h6.4"/></g>
+  <g id="i-ear"><path d="M8.4 21c0-2.4-1.8-3.6-1.8-8.4a5.6 5.6 0 0 1 11.2-.2c0 2.3-1.7 3.2-2.8 4.6-.9 1.2-.5 2.8-2 2.8-1.1 0-1.6-.9-1.6-1.8 0-1.8 2.1-2.2 2.1-4a2.7 2.7 0 0 0-5.4-.2"/></g>
+  <g id="i-bowl"><path d="M4 12h16a8 8 0 0 1-16 0Z"/><path d="M3 20h18"/><path d="M9 8c0-1.5 1-2 1-3.2S9 3 9 3"/><path d="M14 8c0-1.5 1-2 1-3.2S14 3 14 3"/></g>
+  <g id="i-coin"><circle cx="12" cy="12" r="8.4"/><path d="M12 7.4v9.2"/><path d="M14.6 9.6c-.6-.8-1.6-1.2-2.7-1.2-1.5 0-2.6.8-2.6 2s1 1.7 2.6 2.1c1.8.4 2.9 1 2.9 2.2s-1.2 2-2.8 2c-1.2 0-2.2-.4-2.8-1.2"/></g>
+  <g id="i-plan"><path d="M5 4.4h14v16.2H5z"/><path d="M8.4 9h7.2M8.4 12.6h7.2M8.4 16.2h4"/></g>
+  <!-- new for Accra -->
+  <g id="i-map"><path d="M9.4 4.2 3.6 6.4v13.4l5.8-2.2 5.2 2.2 5.8-2.2V4.2l-5.8 2.2Z"/><path d="M9.4 4.2v13.4M14.6 6.4v13.4"/></g>
+  <g id="i-whistle"><path d="M3.4 11.4h9.2l3.4-3.4v9.2l-3.4-3.4H3.4z"/><circle cx="18.4" cy="12" r="2.6"/><path d="M6.2 14.6V18"/></g>
+  <g id="i-tree"><path d="M12 21v-3.6"/><path d="M12 3.4 6.2 12h11.6Z"/><path d="M12 8.6 4.8 17.6h14.4Z"/><path d="M8.6 21h6.8"/></g>
+  <g id="i-bin"><path d="M4.6 7h14.8"/><path d="M6.4 7l1 13.4h9.2L17.6 7"/><path d="M9.4 7V4.4h5.2V7"/><path d="M10.2 10.6v6.4M13.8 10.6v6.4"/></g>
+  <g id="i-phone"><rect x="6.6" y="2.8" width="10.8" height="18.4" rx="2.6"/><path d="M10.4 5.6h3.2"/><circle cx="12" cy="17.8" r="1.1"/></g>
+  <g id="i-leaf"><path d="M20.4 3.6c0 9.2-5.8 13.6-11.8 13.6a4.8 4.8 0 0 1-4.8-4.8C3.8 6.4 10.4 3.6 20.4 3.6Z"/><path d="M4.2 20.8C5.8 15 10.4 10.4 16.6 8.4"/></g>
+  <g id="i-access"><circle cx="12" cy="4.2" r="2"/><path d="M9.6 8.4h4.8"/><path d="M12 8.4v6h4.4l2.2 6.2"/><circle cx="11" cy="16.6" r="4.4"/></g>
+  <g id="i-briefcase"><rect x="3" y="7.4" width="18" height="12.6" rx="2.2"/><path d="M9 7.4V5.6a1.8 1.8 0 0 1 1.8-1.8h2.4A1.8 1.8 0 0 1 15 5.6v1.8"/><path d="M3 12.6h18"/></g>
+  <g id="i-cart"><path d="M2.6 4.6h2.8l2.6 10.8h9.6"/><path d="M6.6 7.8h14.8l-2.2 6.2H8.1"/><circle cx="9.6" cy="19" r="1.6"/><circle cx="17.4" cy="19" r="1.6"/></g>
+  <g id="i-sprout"><path d="M12 21v-7.4"/><path d="M12 13.6C12 9.8 9.4 7.4 5.4 7.4c0 4 2.6 6.2 6.6 6.2Z"/><path d="M12 13.6c0-4.6 2.6-7.2 6.6-7.2 0 4.6-2.6 7.2-6.6 7.2Z"/><path d="M8.4 21h7.2"/></g>
+  <g id="i-ticket"><rect x="2.8" y="6" width="18.4" height="12" rx="2.4"/><path d="M8.6 6v12"/><path d="M12 10.4h5.8M12 14h4"/></g>
+  <g id="i-party"><path d="M3.2 20.8 8.8 8.4l6.8 6.8-13.6 5.6Z"/><path d="M11 12.2 8.8 8.4"/><path d="M14.4 4v2.2M19.2 3.2 17.6 4.8M20.8 8.8h-2.2M20 13.8l-1.8-1.6"/></g>
+  <g id="i-palm"><path d="M12.6 21c-.6-6.2.4-10 1.8-12.6"/><path d="M14.4 8.4c-2.6-1.8-5.4-1.6-7 .6M14.4 8.4c-.4-3 .8-5.4 3.2-6.2M14.4 8.4c2.6-1 5.2-.2 6.4 2M14.4 8.4c-3-.6-4.8-2.6-5-5.4"/><path d="M9.4 21h6.6"/></g>
+  <symbol id="epic-mark" viewBox="0 0 24 24"><path d="M12 2 2 12l10 10 10-10Z"/></symbol>
+</defs></svg>
+
+<div id="fit"><div class="poster" id="poster">
+
+<!-- ============ HEADER ============ -->
+<header class="hdr">
+  <svg class="scene" viewBox="0 0 900 450" preserveAspectRatio="xMidYMax slice"
+       role="img" aria-label="The Accra skyline at golden hour — the old fort and James Town Lighthouse, Independence Arch, the Black Star Gate, the National Theatre and the Kwame Nkrumah Memorial, mirrored in the sea">
+    <defs>
+      <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#AFE4E6"/><stop offset=".5" stop-color="#D9EFE2"/>
+        <stop offset=".82" stop-color="#FBE0B4"/><stop offset="1" stop-color="#FFCE94"/>
+      </linearGradient>
+      <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3E93C9"/><stop offset="1" stop-color="#26638F"/>
+      </linearGradient>
+      <radialGradient id="sunGlow">
+        <stop offset=".45" stop-color="#FFD86B" stop-opacity=".75"/>
+        <stop offset="1" stop-color="#FFD86B" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="beamGrad" x1="1" y1="0" x2="0" y2="0">
+        <stop offset="0" stop-color="#FFF6D2" stop-opacity=".72"/>
+        <stop offset="1" stop-color="#FFF6D2" stop-opacity="0"/>
+      </linearGradient>
+      <clipPath id="seaClip"><rect x="0" y="390" width="900" height="60"/></clipPath>
+    </defs>
+
+    <rect width="900" height="390" fill="url(#skyGrad)"/>
+
+    <g id="skSun">
+      <circle id="sunHalo" cx="396" cy="346" r="84" fill="url(#sunGlow)"/>
+      <circle cx="396" cy="346" r="60" fill="#FFD152"/>
+    </g>
+
+    <!-- birds cross the sky; the title plate hides the middle of the pass, which
+         is what gives the header its depth -->
+    <g id="skBirds" fill="none" stroke="#2F7A78" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <g><path d="M0 0q6-6 12 0q6-6 12 0"/></g>
+      <g><path d="M0 0q6-6 12 0q6-6 12 0"/></g>
+      <g><path d="M0 0q6-6 12 0q6-6 12 0"/></g>
+    </g>
+
+    <!-- Original silhouettes of six Accra landmarks, drawn for this poster on a
+         900x450 grid standing on y=384. The warm #F6E2B8 shapes are openings —
+         windows, arcades and the lighthouse bands — lit at golden hour. -->
+    <g id="skMid">
+      <g id="skMidGeom" fill="#2F7A78"><!-- the old fort at James Town; the lighthouse clears the title plate at x=130 --><rect x="60" y="358" width="38" height="26"/><rect x="56" y="352" width="46" height="7"/><rect x="58" y="345" width="7" height="7"/><rect x="69" y="345" width="7" height="7"/><rect x="80" y="345" width="7" height="7"/><rect x="91" y="345" width="7" height="7"/><rect x="96" y="338" width="34" height="46"/><rect x="92" y="332" width="42" height="7"/><rect x="94" y="325" width="7" height="7"/><rect x="105" y="325" width="7" height="7"/><rect x="116" y="325" width="7" height="7"/><rect x="127" y="325" width="7" height="7"/><rect x="130" y="348" width="76" height="36"/><rect x="126" y="342" width="84" height="7"/><rect x="128" y="335" width="8" height="7"/><rect x="141" y="335" width="8" height="7"/><rect x="154" y="335" width="8" height="7"/><rect x="167" y="335" width="8" height="7"/><rect x="180" y="335" width="8" height="7"/><rect x="193" y="335" width="8" height="7"/><path d="M68 384v-10a4.5 4.5 0 0 1 9 0v10Z" fill="#F6E2B8"/><path d="M84 384v-10a4.5 4.5 0 0 1 9 0v10Z" fill="#F6E2B8"/><path d="M158 384v-15a6.5 6.5 0 0 1 13 0v15Z" fill="#F6E2B8"/><rect x="138" y="356" width="9" height="10" fill="#F6E2B8"/><rect x="186" y="356" width="9" height="10" fill="#F6E2B8"/><rect x="103" y="352" width="8" height="9" fill="#F6E2B8"/><rect x="118" y="352" width="8" height="9" fill="#F6E2B8"/><!-- James Town Lighthouse --><path d="M102 338 104.5 282 119.5 282 122 338Z"/><path d="M103.2 320h17.6v9h-18.4Z" fill="#F6E2B8"/><path d="M104.2 298h15.6v8h-16Z" fill="#F6E2B8"/><rect x="98" y="275" width="28" height="8" rx="2"/><rect x="105" y="258" width="14" height="18"/><rect x="108.5" y="261" width="7" height="11" rx="1" fill="#F6E2B8"/><path d="M103 258q9-11 18 0Z"/><rect x="110.8" y="240" width="2.4" height="8"/><rect x="216" y="320" width="20" height="64"/><rect x="220" y="326" width="5" height="7" fill="#F6E2B8"/><rect x="220" y="339" width="5" height="7" fill="#F6E2B8"/><rect x="220" y="352" width="5" height="7" fill="#F6E2B8"/><rect x="220" y="365" width="5" height="7" fill="#F6E2B8"/><rect x="227" y="326" width="5" height="7" fill="#F6E2B8"/><rect x="227" y="339" width="5" height="7" fill="#F6E2B8"/><rect x="227" y="352" width="5" height="7" fill="#F6E2B8"/><rect x="227" y="365" width="5" height="7" fill="#F6E2B8"/><rect x="240" y="304" width="18" height="80"/><rect x="244" y="310" width="4" height="7" fill="#F6E2B8"/><rect x="244" y="323" width="4" height="7" fill="#F6E2B8"/><rect x="244" y="336" width="4" height="7" fill="#F6E2B8"/><rect x="244" y="349" width="4" height="7" fill="#F6E2B8"/><rect x="244" y="362" width="4" height="7" fill="#F6E2B8"/><rect x="251" y="310" width="4" height="7" fill="#F6E2B8"/><rect x="251" y="323" width="4" height="7" fill="#F6E2B8"/><rect x="251" y="336" width="4" height="7" fill="#F6E2B8"/><rect x="251" y="349" width="4" height="7" fill="#F6E2B8"/><rect x="251" y="362" width="4" height="7" fill="#F6E2B8"/><!-- Independence Arch: tall and narrow under a stepped attic --><path d="M268 384V306H328V384H317V348A19 19 0 0 0 279 348V384Z"/><rect x="262" y="296" width="72" height="11"/><rect x="280" y="286" width="36" height="11"/><rect x="296.7" y="258" width="2.6" height="28"/><path d="M300 258 321 265 300 272Z"/><rect x="272" y="322" width="6" height="9" fill="#F6E2B8"/><rect x="320" y="322" width="6" height="9" fill="#F6E2B8"/><!-- Black Star Gate: wide and low, a colonnade under the star --><path d="M342 384V324H450V384H424V354A28 28 0 0 0 368 354V384Z"/><rect x="334" y="310" width="124" height="14"/><rect x="378" y="296" width="36" height="14"/><path d="M396.00 264.00 400.11 274.34 411.22 275.06 402.66 282.16 405.40 292.94 396.00 287.00 386.60 292.94 389.34 282.16 380.78 275.06 391.89 274.34Z"/><rect x="350" y="332" width="7" height="20" rx="3" fill="#F6E2B8"/><rect x="436" y="332" width="7" height="20" rx="3" fill="#F6E2B8"/><rect x="359" y="366" width="6" height="18" fill="#F6E2B8"/><rect x="428" y="366" width="6" height="18" fill="#F6E2B8"/><!-- National Theatre: three nested shell roofs --><rect x="462" y="352" width="112" height="32"/><rect x="456" y="346" width="124" height="7"/><path d="M468 346A50 43 0 0 1 568 346H558A40 34 0 0 0 478 346Z"/><path d="M484 346A36 31 0 0 1 556 346H546A26 22 0 0 0 494 346Z"/><path d="M500 346A22 19 0 0 1 542 346H532A12 11 0 0 0 510 346Z"/><rect x="471" y="362" width="12" height="18" fill="#F6E2B8"/><rect x="490" y="362" width="12" height="18" fill="#F6E2B8"/><rect x="509" y="362" width="12" height="18" fill="#F6E2B8"/><rect x="528" y="362" width="12" height="18" fill="#F6E2B8"/><rect x="547" y="362" width="12" height="18" fill="#F6E2B8"/><!-- Kwame Nkrumah Memorial: concave flanks flaring out to the base --><rect x="580" y="376" width="98" height="8"/><rect x="590" y="368" width="78" height="8"/><path d="M586 368C608 348 618 330 618 288H640C640 330 650 348 672 368Z"/><rect x="615" y="281" width="28" height="8"/><rect x="620" y="316" width="5" height="26" rx="2.5" fill="#F6E2B8"/><rect x="633" y="316" width="5" height="26" rx="2.5" fill="#F6E2B8"/><rect x="600" y="350" width="4" height="18" rx="2" fill="#F6E2B8"/><rect x="654" y="350" width="4" height="18" rx="2" fill="#F6E2B8"/><!-- a tower and a domed hall at the eastern end --><rect x="682" y="314" width="22" height="70"/><rect x="686" y="320" width="5" height="7" fill="#F6E2B8"/><rect x="686" y="332" width="5" height="7" fill="#F6E2B8"/><rect x="686" y="344" width="5" height="7" fill="#F6E2B8"/><rect x="686" y="356" width="5" height="7" fill="#F6E2B8"/><rect x="686" y="368" width="5" height="7" fill="#F6E2B8"/><rect x="694" y="320" width="5" height="7" fill="#F6E2B8"/><rect x="694" y="332" width="5" height="7" fill="#F6E2B8"/><rect x="694" y="344" width="5" height="7" fill="#F6E2B8"/><rect x="694" y="356" width="5" height="7" fill="#F6E2B8"/><rect x="694" y="368" width="5" height="7" fill="#F6E2B8"/><path d="M714 350A60 38 0 0 1 834 350Z"/><rect x="708" y="350" width="132" height="10"/><rect x="714" y="360" width="120" height="24"/><rect x="772.7" y="298" width="2.6" height="14"/><rect x="722" y="364" width="13" height="16" fill="#F6E2B8"/><rect x="745" y="364" width="13" height="16" fill="#F6E2B8"/><rect x="768" y="364" width="13" height="16" fill="#F6E2B8"/><rect x="791" y="364" width="13" height="16" fill="#F6E2B8"/><rect x="814" y="364" width="13" height="16" fill="#F6E2B8"/></g>
+    </g>
+
+    <!-- the lighthouse is lit: a sweeping beam and a pulsing lamp -->
+    <path id="beamG" d="M112 267 0 182 0 254Z" fill="url(#beamGrad)"/>
+    <circle id="lampGlow" cx="112" cy="267" r="4.5" fill="#FFF1B8"/>
+
+    <g id="skNear" fill="#12333A"><rect x="0" y="384" width="900" height="7"/></g>
+
+    <!-- the sea, and the city mirrored in it -->
+    <rect x="0" y="390" width="900" height="60" fill="url(#seaGrad)"/>
+    <g id="skRefl" clip-path="url(#seaClip)" opacity=".2">
+      <g transform="translate(0,390) scale(1,-0.45) translate(0,-390)"><use href="#skMidGeom"/></g>
+    </g>
+    <g id="skGlint" fill="#FFE9A8"><rect x="366" y="396" width="60" height="3.5" rx="1.8"/><rect x="374" y="405" width="44" height="3.5" rx="1.8"/><rect x="360" y="414" width="72" height="3" rx="1.5"/><rect x="378" y="423" width="36" height="3" rx="1.5"/><rect x="368" y="432" width="56" height="2.6" rx="1.3"/><rect x="382" y="441" width="28" height="2.6" rx="1.3"/></g>
+    <g id="skWaves" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity=".3" fill="none">
+      <path d="M56 402h38"/><path d="M150 420h28"/><path d="M228 438h32"/>
+      <path d="M520 408h36"/><path d="M628 430h30"/><path d="M742 400h36"/><path d="M812 436h28"/>
+    </g>
+    <g fill="#12333A" opacity=".8">
+      <g transform="translate(128,414)"><path d="M-14 0h28l-4 6h-20Z"/><path d="M0 0v-13l11 11Z"/></g>
+      <g transform="translate(790,438)"><path d="M-11 0h22l-3 5h-16Z"/><path d="M0 0v-10l8 8Z"/></g>
+    </g>
+  </svg>
+  <div class="plate">
+    <div class="sign">
+      <h1>Accra's Team Plan</h1>
+      <p class="acr">Making the city awesome for kids!</p>
+    </div>
+    <div class="subplate">
+      <img class="logo" src="epic-logo-2.svg" alt="EPIC">
+      <div class="divider"></div>
+      <p>Have you ever wondered who decides where the new parks, schools and clean streets in your city go — and how <b>you</b> can help?</p>
+    </div>
+  </div>
+</header>
+
+<!-- ============ OPENING LEDE ============ -->
+<section class="band tight" style="background:var(--cream);padding-bottom:10px">
+  <p class="lede" style="margin-bottom:0">The <b><span class="gloss" tabindex="0" data-tip="The local government team in charge of Accra, Ghana's capital city. &ldquo;Metropolitan&rdquo; just means a really big city.">Accra Metropolitan Assembly</span></b> made its very own <b>district plan</b> so that every child in the city can grow up <b>safe, healthy, happy and ready to learn</b>. The plan brings families and community leaders onto the same team, so every kid gets the care and support they need to succeed.</p>
+</section>
+
+<!-- ============ FACT STRIP ============ -->
+<section class="band tight" style="background:var(--cream)">
+  <div class="facts reveal">
+    <div class="fact">
+      <div class="num">5</div>
+      <div class="lbl">Super action zones</div>
+      <div class="sub">Five areas to make better</div>
+    </div>
+    <div class="fact">
+      <div class="num">1</div>
+      <div class="lbl">City team plan</div>
+      <div class="flags">
+        <svg width="30" height="20" viewBox="0 0 30 20" role="img" aria-label="Ghana">
+          <rect width="30" height="6.67" fill="#CE1126"/><rect y="6.67" width="30" height="6.67" fill="#FCD116"/><rect y="13.34" width="30" height="6.66" fill="#006B3F"/>
+          <path d="m15 7.4 1.1 2.3 2.5.3-1.9 1.7.5 2.5-2.2-1.3-2.2 1.3.5-2.5-1.9-1.7 2.5-.3Z" fill="#000"/>
+          <rect width="30" height="20" fill="none" stroke="rgba(0,0,0,.18)"/>
+        </svg>
+      </div>
+      <div class="sub" style="margin-top:5px">Accra, Ghana</div>
+    </div>
+    <div class="fact">
+      <div class="num">3</div>
+      <div class="lbl">Goals for every kid</div>
+      <div class="sub">Safe, healthy &amp; happy</div>
+    </div>
+    <div class="fact">
+      <div class="num">0</div>
+      <div class="lbl">Children left behind</div>
+      <div class="sub">Every child belongs</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TWO BIG WORDS EXPLAINED ============ -->
+<section class="band" style="background:var(--sage)">
+  <p class="kicker">First, two big words</p>
+  <h2 class="sec">Who makes the plan — and what is it?</h2>
+  <p class="lede">Grown-ups use some tricky words for this. Here is what they actually mean.</p>
+  <div class="explain reveal">
+    <div class="exp">
+      <div class="disc" style="background:var(--teal)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-whistle"/></svg></div>
+      <h3>What is a District Assembly?</h3>
+      <p>Imagine your neighbourhood as a huge team — the <b>District Assembly</b> is like the coaches and leaders of that team!</p>
+      <p>They are the <span class="gloss" tabindex="0" data-tip="The leaders in charge of your own town or city, rather than the whole country.">local government</span> people whose job is to take care of the town: fix roads, build schools, keep streets clean, and make sure everyone stays safe and happy.</p>
+    </div>
+    <div class="exp">
+      <div class="disc" style="background:var(--orange)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-map"/></svg></div>
+      <h3>What is a District Plan?</h3>
+      <p>A <b>district plan</b> is like a giant map made by local leaders to turn a town or city into a much better place to live!</p>
+      <p>Instead of adults just guessing what to do, the plan lists the biggest problems — dirty streets, schools that need help, parks that need to be safer — then writes a <b>step-by-step checklist</b> for fixing them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY THEY MADE IT ============ -->
+<section class="band" style="background:var(--cream)">
+  <p class="kicker">Why did they make the plan?</p>
+  <h2 class="sec">So every child in Accra grows up well</h2>
+  <p class="lede">The big goal is the same for every single kid — no matter who they are or what their family has.</p>
+  <div class="goals reveal">
+    <div class="goal">
+      <div class="disc" style="background:var(--plum)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-shield"/></svg></div>
+      <h3>Safe</h3>
+      <p>Streets, homes and playgrounds where children are looked after and protected.</p>
+    </div>
+    <div class="goal">
+      <div class="disc" style="background:var(--coral)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-heart"/></svg></div>
+      <h3>Healthy</h3>
+      <p>Good food, clean surroundings and care from doctors and nurses when it is needed.</p>
+    </div>
+    <div class="goal">
+      <div class="disc" style="background:var(--sun)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-spark"/></svg></div>
+      <h3>Happy &amp; ready to learn</h3>
+      <p>Loving families, fun places to play, and schools that make children curious.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO IS IT FOR ============ -->
+<section class="band tight" style="background:var(--cream);padding-top:8px">
+  <p class="kicker">Who is the plan for?</p>
+  <h2 class="sec">Young children and their families</h2>
+  <p class="lede">Everybody counts — and the plan gives extra help to the families who need it most.</p>
+  <div class="needs reveal">
+    <div class="need"><div class="disc" style="background:var(--teal)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-family"/></svg></div><div><h3>Young children &amp; families</h3><p>Every little kid in Accra, and the grown-ups who look after them.</p></div></div>
+    <div class="need"><div class="disc" style="background:var(--sky)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-access"/></svg></div><div><h3>Children with disabilities</h3><p>Kids whose bodies or brains work in their own way, and who need the right support to join in.</p></div></div>
+    <div class="need"><div class="disc" style="background:var(--orange)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-coin"/></svg></div><div><h3>Families who have less money</h3><p>So that not having much money never decides what a child can become.</p></div></div>
+    <div class="need"><div class="disc" style="background:var(--green-2)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-town"/></svg></div><div><h3>Families in tougher neighbourhoods</h3><p>Places with more health problems, or with dirtier air, water and streets.</p></div></div>
+  </div>
+</section>
+
+<!-- ============ THE BIG IDEA (teal) ============ -->
+<section class="band you">
+  <p class="kicker">The big idea</p>
+  <div class="quote">When children, families and communities<br>get the right support,<br><em>every child has a better chance<br>to grow up healthy, happy and strong.</em></div>
+  <div class="ypts reveal">
+    <div class="ypt"><div class="disc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-child"/></svg></div><div><h4>Children</h4><p>You are the reason the whole plan exists — and the best person to say what your city needs.</p></div></div>
+    <div class="ypt"><div class="disc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-family"/></svg></div><div><h4>Families</h4><p>Parents and carers get tips, tools and support so home is a happy place to grow up in.</p></div></div>
+    <div class="ypt"><div class="disc"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-people"/></svg></div><div><h4>Communities</h4><p>Neighbours, teachers and leaders all pull in the same direction instead of working alone.</p></div></div>
+  </div>
+</section>
+
+<!-- ============ THE FIVE ZONES RING (D3) ============ -->
+<section class="band" style="background:var(--mint)">
+  <p class="kicker">Understanding the plan</p>
+  <h2 class="sec">5 Super Action Zones</h2>
+  <p class="lede" style="margin-bottom:6px">To make it all happen, Accra's leaders are focusing on five big areas — and every one of them points back at the same thing.</p>
+  <div class="ringwrap reveal">
+    <svg id="ring" viewBox="0 0 900 600" role="img" aria-label="Five Super Action Zones arranged around every child in Accra">
+      <circle cx="450" cy="300" r="180" fill="none" stroke="#9FD8D2" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/>
+      <g id="spokes" stroke-width="4" stroke-linecap="round"></g>
+      <g id="nodes"></g>
+      <g id="hub">
+        <circle cx="450" cy="300" r="80" fill="#fff" opacity=".65"/>
+        <circle cx="450" cy="300" r="72" fill="#17726C"/>
+        <g transform="translate(433.8,264) scale(1.35)" fill="none" stroke="#FFFFFF" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round">
+          <use href="#i-child"/>
+        </g>
+        <text x="450" y="314" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700">EVERY CHILD</text>
+        <text x="450" y="330" text-anchor="middle" fill="#8FE3D2" font-size="12.5" font-weight="700">IN ACCRA</text>
+      </g>
+    </svg>
+    <p class="ring-cap" id="ringCap"><b>Green &amp; Clean Spaces.</b> Kids need safe, clean places to play and grow — so the city is planting trees, sorting its rubbish and cleaning up fast.</p>
+  </div>
+</section>
+
+<!-- ============ ZONE 1 ============ -->
+<section class="band" style="background:var(--cream)">
+  <div class="zhead">
+    <div class="znum" style="background:var(--green-2)">1</div>
+    <div class="zdisc" style="background:var(--green)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-tree"/></svg></div>
+    <div class="ztitle"><h3>Green &amp; Clean Spaces</h3><p style="color:var(--green-2)">Environment</p></div>
+  </div>
+  <p class="zlede">Kids need safe, clean places to play and grow!</p>
+  <div class="acts c2 reveal">
+    <div class="actc" style="border-top-color:var(--green-2)">
+      <div class="disc" style="background:var(--green-2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-tree"/></svg></div>
+      <h4>Planting more trees</h4>
+      <p>Building green parks and tree-filled spaces where children can play safely.</p>
+    </div>
+    <div class="actc" style="border-top-color:var(--sky)">
+      <div class="disc" style="background:var(--sky)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-bin"/></svg></div>
+      <h4>Colour-coded bins</h4>
+      <p>Teaching schools and families how to separate their trash using special coloured bins and <span class="gloss" tabindex="0" data-tip="Turning old things — like bottles, paper and cans — into brand new things instead of throwing them away.">recycling</span> programmes.</p>
+    </div>
+    <div class="actc" style="border-top-color:var(--plum)">
+      <div class="disc" style="background:var(--plum)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-phone"/></svg></div>
+      <h4>Smart clean-up</h4>
+      <p>Using phone apps and digital maps to spot dirty areas and clean them up fast.</p>
+    </div>
+    <div class="actc" style="border-top-color:var(--orange)">
+      <div class="disc" style="background:var(--orange)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-leaf"/></svg></div>
+      <h4>Building a compost plant</h4>
+      <p>Creating a special place where leftover food and plant scraps are turned into <span class="gloss" tabindex="0" data-tip="Rich, crumbly soil made from old food and plant scraps. Plants love it — it works like food for them.">compost</span>, which is food for trees and gardens.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ZONE 2 ============ -->
+<section class="band" style="background:var(--sage)">
+  <div class="zhead">
+    <div class="znum" style="background:var(--sky)">2</div>
+    <div class="zdisc" style="background:#3D8FC6"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-access"/></svg></div>
+    <div class="ztitle"><h3>Helping Every Child Belong</h3><p style="color:#2E7BAE"><span class="gloss" tabindex="0" data-tip="Making sure children whose bodies or brains work differently can join in with everything, everywhere.">Disability inclusion</span></p></div>
+  </div>
+  <p class="zlede">Every child is special, and no one gets left behind!</p>
+  <div class="acts c3 reveal">
+    <div class="actc" style="border-top-color:var(--sky)">
+      <div class="disc" style="background:var(--sky)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-teacher"/></svg></div>
+      <h4>School helpers</h4>
+      <p>Helping mothers of children with special needs join schools, to support teaching and learning.</p>
+    </div>
+    <div class="actc" style="border-top-color:var(--pink)">
+      <div class="disc" style="background:var(--pink)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-hands"/></svg></div>
+      <h4>Friendly communities</h4>
+      <p>Teaching everyone how to be kind, welcoming and supportive to kids of all abilities.</p>
+    </div>
+    <div class="actc" style="border-top-color:var(--coral)">
+      <div class="disc" style="background:var(--coral)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-stetho"/></svg></div>
+      <h4>Better care</h4>
+      <p>Helping families get <span class="gloss" tabindex="0" data-tip="A plan you pay a little into, so that when someone gets sick, the big doctor bills are covered for you.">health insurance</span> that covers special medical care and <span class="gloss" tabindex="0" data-tip="Special practice with an expert that helps your body or your talking get stronger, step by step.">therapy</span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ZONE 3 ============ -->
+<section class="band" style="background:var(--cream)">
+  <div class="zhead">
+    <div class="znum" style="background:var(--orange)">3</div>
+    <div class="zdisc" style="background:#C8551F"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-briefcase"/></svg></div>
+    <div class="ztitle"><h3>Helping Families Grow Stronger</h3><p style="color:#C8551F"><span class="gloss" tabindex="0" data-tip="Helping families who do not have enough money for the things they need, so fewer people are poor.">Poverty reduction</span></p></div>
+  </div>
+  <p class="zlede">When families have what they need, children thrive!</p>
+  <div class="acts c2 reveal">
+    <div class="actc" style="border-top-color:var(--orange)">
+      <div class="disc" style="background:var(--orange)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-palm"/></svg></div>
+      <h4>New opportunities</h4>
+      <p>Creating jobs in fun areas like beach <span class="gloss" tabindex="0" data-tip="Visitors coming to see a place and enjoy it. They spend money there, which means jobs for local people.">tourism</span> and local businesses.</p>
+    </div>
+    <div class="actc" style="border-top-color:var(--teal)">
+      <div class="disc" style="background:var(--teal)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cart"/></svg></div>
+      <h4>Tech &amp; tools</h4>
+      <p>Using technology and <span class="gloss" tabindex="0" data-tip="Shops and market stalls that live on a phone or a computer, so people far away can buy from you too.">digital markets</span> to help parents sell goods, earn money and support their homes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ZONE 4 ============ -->
+<section class="band" style="background:var(--sage)">
+  <div class="zhead">
+    <div class="znum" style="background:var(--plum)">4</div>
+    <div class="zdisc" style="background:#74569C"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-house"/></svg></div>
+    <div class="ztitle"><h3>Loving Families &amp; Connected Neighbourhoods</h3><p style="color:#74569C"><span class="gloss" tabindex="0" data-tip="Grown-ups noticing what a child needs and answering with love, straight away — a hug, a chat, or a hand to hold.">Responsive caregiving</span></p></div>
+  </div>
+  <p class="zlede">Happy homes and caring neighbours make kids feel safe.</p>
+  <div class="acts c2 reveal">
+    <div class="actc" style="border-top-color:var(--plum)">
+      <div class="disc" style="background:var(--plum)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-house"/></svg></div>
+      <h4>Parenting hubs</h4>
+      <p>Setting up community centres where parents can learn great tips for taking care of young children.</p>
+    </div>
+    <div class="actc" style="border-top-color:var(--pink)">
+      <div class="disc" style="background:var(--pink)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-party"/></svg></div>
+      <h4>Family fun days</h4>
+      <p>Organising fun events, community clubs and <span class="gloss" tabindex="0" data-tip="When someone older and wiser — a mentor — teams up with you to give advice and cheer you on.">mentorship</span> programmes to bring families together.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ZONE 5 ============ -->
+<section class="band" style="background:var(--cream)">
+  <div class="zhead">
+    <div class="znum" style="background:var(--sun);color:var(--ink)">5</div>
+    <div class="zdisc" style="background:#D9A417"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-bowl"/></svg></div>
+    <div class="ztitle"><h3>Yummy &amp; Healthy Food</h3><p style="color:#B98A0B"><span class="gloss" tabindex="0" data-tip="The good stuff inside food that helps your body and your brain grow big and strong.">Nutrition</span></p></div>
+  </div>
+  <p class="zlede">Growing bodies need good food!</p>
+  <div class="acts c2 reveal">
+    <div class="actc" style="border-top-color:var(--green)">
+      <div class="disc" style="background:var(--green)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-sprout"/></svg></div>
+      <h4>Home gardens</h4>
+      <p>Teaching families how to grow their own fresh, healthy vegetables at home using recycled containers.</p>
+    </div>
+    <div class="actc" style="border-top-color:var(--sun)">
+      <div class="disc" style="background:#D9A417"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-ticket"/></svg></div>
+      <h4>Food vouchers</h4>
+      <p>Sending special mobile-money <span class="gloss" tabindex="0" data-tip="A kind of ticket that works like money, but only for one thing — here, buying healthy food.">food vouchers</span> to families who need help buying healthy meals.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE CITY (three.js) ============ -->
+<section class="big">
+  <p class="kicker" style="color:var(--sun)">Why five zones and not one</p>
+  <h2 class="sec">You can't build a city with one block</h2>
+  <p class="lede">Imagine building Accra out of giant toy blocks. Every colour is one of the five action zones — take a colour away and the whole city wobbles.</p>
+  <div class="cityscape">
+    <svg id="cityFallback" viewBox="0 0 900 340" aria-label="A city skyline built from coloured toy blocks, one colour for each action zone">
+      <g id="fbBlocks"></g>
+    </svg>
+    <canvas id="city3d" aria-hidden="true" style="opacity:0"></canvas>
+  </div>
+  <div class="blocklegend" id="legend"></div>
+  <p class="bigline">Clean parks are lovely — but not if families have no food. Good food helps — but not if children are left out of school. When all five zones are built together, <b>Accra becomes a city where every child can grow up safe, healthy and happy.</b></p>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.14" viewBox="0 0 900 230" aria-hidden="true">
+    <circle cx="90" cy="40" r="60" fill="#fff"/><circle cx="820" cy="190" r="80" fill="#fff"/><circle cx="740" cy="30" r="34" fill="#fff"/>
+  </svg>
+  <div style="position:relative">
+    <h2>You are part of Accra's team!</h2>
+    <p class="sub">This is your city too. Your voice helps decide what gets fixed first.</p>
+  </div>
+</section>
+
+<!-- ============ WHAT CAN YOU DO ============ -->
+<section class="band" style="background:var(--cream)">
+  <p class="kicker">Your turn</p>
+  <h2 class="sec">What can you do?</h2>
+  <div class="goals reveal" style="margin-top:24px">
+    <div class="goal"><div class="disc" style="background:var(--orange)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mic"/></svg></div><p style="font-size:15.5px"><b>Speak up about your neighbourhood</b></p></div>
+    <div class="goal"><div class="disc" style="background:var(--green)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-bin"/></svg></div><p style="font-size:15.5px"><b>Sort your rubbish into the right bin</b></p></div>
+    <div class="goal"><div class="disc" style="background:var(--teal)"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-hands"/></svg></div><p style="font-size:15.5px"><b>Make sure every kid is included</b></p></div>
+  </div>
+</section>
+
+<!-- ============ PARTNERS ============ -->
+<section class="band tight" style="background:var(--sage)">
+  <p class="kicker">Working together</p>
+  <h2 class="sec">Our partners</h2>
+  <p class="lede" style="margin-bottom:22px">These are the teams helping Accra turn the plan into real parks, schools and healthy meals.</p>
+  <div class="partners reveal">
+    <span class="plogo p-ucl"><img src="ucl.png" alt="UCL — University College London"></span>
+    <span class="plogo p-nihr"><img src="nihr.png" alt="NIHR — National Institute for Health and Care Research"></span>
+    <span class="plogo p-flacso"><img src="logo_flacso.png" alt="FLACSO Argentina"></span>
+    <span class="plogo p-clcd"><img src="clcd-logo.png" alt="CLCD"></span>
+  </div>
+  <p class="funding">This research was funded by the National Institute for Health and Care Research (NIHR) [NIHR158910] using UK international development funding from the UK Government to support global health research. The views expressed in this publication are those of the author(s) and not necessarily those of the NIHR or the UK government.</p>
+</section>
+
+<!-- ============ SOURCE ============ -->
+<footer class="src">
+  <p><b>Source:</b> Accra Metropolitan Assembly District Plan — child-friendly summary, prepared for the EPIC Project.<br>
+  A city plan built around five action zones so that every young child in Accra grows up safe, healthy, happy and ready to learn.</p>
+  <div class="badge">
+    <img class="logo" src="epic-logo-2.svg" alt="EPIC">
+    <span>CHILD-FRIENDLY<br>EDITION</span>
+  </div>
+</footer>
+
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+"use strict";
+var SVGNS = "http://www.w3.org/2000/svg";
+var REDUCE = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+function el(tag, attrs, parent){
+  var n = document.createElementNS(SVGNS, tag);
+  for (var k in attrs) n.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(n);
+  return n;
+}
+
+/* ---------------------------------------------------------------
+   1. THE FIVE SUPER ACTION ZONES — a ring around every child
+   Geometry is rendered in plain DOM so the poster is complete
+   before any library loads; D3 then owns motion + interaction.
+---------------------------------------------------------------- */
+var CX = 450, CY = 300, R = 180, NODE_R = 52, HUB_R = 72;
+
+var ZONES = [
+  { key:"green",   icon:"#i-tree",      color:"#3E9E52", ink:"#fff",
+    pill:["Green & Clean Spaces"], pw:216, px:450, py:36,
+    title:"Green & Clean Spaces.",
+    blurb:"Kids need safe, clean places to play and grow — so the city is planting trees, sorting its rubbish and cleaning up fast." },
+  { key:"belong",  icon:"#i-access",    color:"#4EA8DE", ink:"#fff",
+    pill:["Helping Every","Child Belong"], pw:150, px:768, py:244,
+    title:"Helping Every Child Belong.",
+    blurb:"Every child is special, so schools get helpers, neighbours learn to be welcoming, and families get care that covers therapy." },
+  { key:"families",icon:"#i-briefcase", color:"#E4692F", ink:"#fff",
+    pill:["Helping Families","Grow Stronger"], pw:166, px:700, py:532,
+    title:"Helping Families Grow Stronger.",
+    blurb:"When families have what they need, children thrive — so the plan makes new jobs and helps parents sell things online." },
+  { key:"loving",  icon:"#i-house",     color:"#8E6FB5", ink:"#fff",
+    pill:["Loving Families &","Neighbourhoods"], pw:170, px:200, py:532,
+    title:"Loving Families & Connected Neighbourhoods.",
+    blurb:"Happy homes and caring neighbours make kids feel safe, so there are parenting hubs and family fun days for everyone." },
+  { key:"food",    icon:"#i-bowl",      color:"#F5C84C", ink:"#12333A",
+    pill:["Yummy &","Healthy Food"], pw:150, px:132, py:244,
+    title:"Yummy & Healthy Food.",
+    blurb:"Growing bodies need good food, so families learn to grow vegetables at home and get vouchers for healthy meals." }
+];
+
+(function buildRing(){
+  var spokes = document.getElementById("spokes");
+  var nodes  = document.getElementById("nodes");
+  if (!spokes || !nodes) return;
+
+  ZONES.forEach(function(d, i){
+    var a  = (-90 + i * 72) * Math.PI / 180;
+    var co = Math.cos(a), si = Math.sin(a);
+    d.x = CX + R * co;
+    d.y = CY + R * si;
+
+    d.spoke = el("line", {
+      x1: CX + (HUB_R + 8) * co, y1: CY + (HUB_R + 8) * si,
+      x2: CX + (R - NODE_R - 4) * co, y2: CY + (R - NODE_R - 4) * si,
+      stroke: d.color, "stroke-opacity": .55, class: "spoke"
+    }, spokes);
+
+    var g = el("g", { class:"node-g", "data-key": d.key, tabindex: "0",
+                      role:"button", "aria-label": d.title.replace(/\.$/, "") }, nodes);
+    d.g = g;
+
+    el("circle", { cx:d.x, cy:d.y, r:NODE_R + 6, fill:"#fff", "fill-opacity":.55 }, g);
+    d.circle = el("circle", { cx:d.x, cy:d.y, r:NODE_R, fill:d.color, class:"node-c" }, g);
+
+    var ic = el("g", { transform:"translate(" + (d.x - 19.2) + "," + (d.y - 19.2) + ") scale(1.6)",
+                       fill:"none", stroke:d.ink, "stroke-width":1.5,
+                       "stroke-linecap":"round", "stroke-linejoin":"round",
+                       "pointer-events":"none" }, g);
+    var use = el("use", {}, ic);
+    use.setAttribute("href", d.icon);
+
+    // label pill, placed radially outside its node
+    var ph = d.pill.length > 1 ? 46 : 34;
+    el("rect", { x: d.px - d.pw / 2, y: d.py - ph / 2, width:d.pw, height:ph,
+                 rx: ph / 2, class:"pill-bg", "pointer-events":"none" }, g);
+    d.pill.forEach(function(line, li){
+      var t = el("text", {
+        x: d.px, y: d.py + (d.pill.length > 1 ? (li === 0 ? -3 : 14) : 4.5),
+        "text-anchor":"middle", class:"pill-t", "pointer-events":"none"
+      }, g);
+      t.textContent = line;
+    });
+  });
+})();
+
+/* ---------------------------------------------------------------
+   2. The block city — one colour per action zone
+---------------------------------------------------------------- */
+var BRICK = ZONES.map(function(d){ return d.color; });
+var NZ = BRICK.length;
+
+function cityBlocks(){
+  var B = [];
+  var add = function(x, y, w, h, c){ B.push({ x:x, y:y, w:w, h:h, c:c }); };
+  // street-level course, right across the city
+  for (var i = -4; i <= 4; i++) add(i, 0, .96, .6, (i + 10) % NZ);
+  // towers, tallest in the middle
+  var TOWERS = [
+    { x:-3.9, h:4 }, { x:-2.95, h:2 }, { x:-1.95, h:5 }, { x:-.95, h:3 },
+    { x:0,    h:6 },
+    { x:.95,  h:3 }, { x:1.95, h:5 }, { x:2.95, h:2 }, { x:3.9, h:4 }
+  ];
+  TOWERS.forEach(function(t, k){
+    for (var r = 1; r <= t.h; r++) add(t.x, r, .86, .6, (k + r) % NZ);
+    add(t.x, t.h + 1, .42, .5, (k + t.h + 2) % NZ);   // rooftop cap
+  });
+  // The modular colouring above happens to leave the fifth zone short and clustered.
+  // Promote four well-spread blocks so all five colours read evenly across the skyline.
+  [{ x:-2.95, y:1 }, { x:0, y:4 }, { x:1.95, y:2 }, { x:3.9, y:3 }].forEach(function(p){
+    B.forEach(function(b){ if (b.x === p.x && b.y === p.y) b.c = 4; });
+  });
+  return B;
+}
+var BLOCKS = cityBlocks();
+
+(function fallbackCity(){          // always drawn; 3D fades in over it
+  var host = document.getElementById("fbBlocks");
+  if (!host) return;
+  var U = 58, ox = 450, oy = 318, STEP = U * .64;
+  BLOCKS.forEach(function(b){
+    el("rect", {
+      x: ox + b.x * U - b.w * U / 2, y: oy - (b.y + 1) * STEP,
+      width: b.w * U, height: b.h * U, rx: 5,
+      fill: BRICK[b.c], stroke:"rgba(255,255,255,.28)", "stroke-width":1.5
+    }, host);
+  });
+  // a little park in front of the city, and two trees standing in it.
+  // Kept short — with no depth cue to read, a tall tree here looks like it is
+  // growing out of a building rather than standing in front of one.
+  el("rect", { x: ox - 260, y: oy - 3, width: 520, height: 17, rx: 8, fill:"#2E8B57" }, host);
+  [-100, 100].forEach(function(dx){
+    el("rect", { x: ox + dx - 3, y: oy - 26, width: 6, height: 30, rx: 3, fill:"#7A5233" }, host);
+    // a lighter green than the zone-1 blocks, so a tree never reads as a block
+    el("circle", { cx: ox + dx, cy: oy - 34, r: 14, fill:"#7BD389" }, host);
+    el("circle", { cx: ox + dx - 10, cy: oy - 25, r: 9, fill:"#4FB86B" }, host);
+    el("circle", { cx: ox + dx + 10, cy: oy - 25, r: 9, fill:"#4FB86B" }, host);
+  });
+})();
+
+(function legend(){
+  var host = document.getElementById("legend");
+  if (!host) return;
+  ZONES.forEach(function(d, i){
+    var s = document.createElement("span");
+    s.innerHTML = '<i style="background:' + d.color + '"></i>' +
+                  (i + 1) + '. ' + d.title.replace(/\.$/, "").replace(" Connected", "");
+    host.appendChild(s);
+  });
+})();
+
+/* ---------------------------------------------------------------
+   3. Reveal on scroll — 60ms stagger, opacity + 14px lift only
+---------------------------------------------------------------- */
+(function reveals(){
+  var items = [].slice.call(document.querySelectorAll(".reveal"));
+  if (REDUCE || !("IntersectionObserver" in window)){
+    items.forEach(function(n){ n.classList.add("shown"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e, i){
+      if (!e.isIntersecting) return;
+      setTimeout(function(){ e.target.classList.add("shown"); }, i * 60);
+      io.unobserve(e.target);
+    });
+  }, { threshold:.15 });
+  items.forEach(function(n){ io.observe(n); });
+})();
+
+/* ---------------------------------------------------------------
+   0. The Accra skyline header. The scene is complete static SVG —
+   D3 only adds the entrance and the ambient loop on top of it.
+---------------------------------------------------------------- */
+function withD3Skyline(d3){
+  if (d3.select("svg.scene").empty()) return;
+
+  var beam  = d3.select("#beamG");
+  var halo  = d3.select("#sunHalo");
+  var lamp  = d3.select("#lampGlow");
+  var waves = d3.selectAll("#skWaves > path").nodes();
+  var glint = d3.selectAll("#skGlint > rect").nodes();
+  var birds = d3.selectAll("#skBirds > g").nodes();
+
+  if (REDUCE){
+    // no loop to fly them, so park the birds where the title plate does not
+    // cover them — a still scene should not simply lose them
+    [[72, 216, .9], [806, 190, 1.05], [848, 234, .78]].forEach(function(b, i){
+      if (birds[i]) birds[i].setAttribute("transform",
+        "translate(" + b[0] + "," + b[1] + ") scale(" + b[2] + ")");
+    });
+    return;
+  }
+
+  // The three depth layers rise into place, back to front. Everything below
+  // hides a layer first and animates it back, so it must be impossible to get
+  // stuck hidden: the entrance is rAF-driven and rAF does not tick in a
+  // background tab, which would otherwise leave the whole header blank.
+  var LAYERS = [["#skSun", 0, 34], ["#skMid", 220, 22],
+                ["#skNear", 380, 14], ["#skRefl", 500, 0]];
+  function finalOpacity(id){ return id === "#skRefl" ? .28 : 1; }
+  function settle(){                       // the state the header must end in
+    LAYERS.forEach(function(l){
+      d3.select(l[0]).interrupt()
+        .style("opacity", finalOpacity(l[0]))
+        .attr("transform", null);          // the reflection's flip is on its inner g
+    });
+  }
+
+  if (document.hidden){
+    settle();                              // never hide what we cannot un-hide
+  } else {
+    LAYERS.forEach(function(l){
+      d3.select(l[0])
+        .style("opacity", 0)
+        .attr("transform", "translate(0," + l[2] + ")")
+        .transition().delay(l[1]).duration(1000).ease(d3.easeCubicOut)
+        .style("opacity", finalOpacity(l[0]))
+        .attr("transform", null);
+    });
+    // same 12s budget the ring uses — setTimeout fires even while hidden
+    setTimeout(settle, 12000);
+    document.addEventListener("visibilitychange", function(){
+      if (document.hidden) settle();
+    });
+  }
+
+  d3.timer(function(ms){
+    var t = ms / 1000;
+
+    // the lighthouse sweeps, and its lamp brightens as the beam comes round
+    var phase = Math.sin(t * .5);
+    beam.attr("transform", "rotate(" + (phase * 20).toFixed(2) + " 112 267)")
+        .style("opacity", (.45 + Math.abs(Math.cos(t * .5)) * .55).toFixed(2));
+    lamp.attr("r", (4 + Math.abs(Math.cos(t * .5)) * 2.1).toFixed(2));
+
+    // the sun breathes
+    halo.attr("r", (84 + Math.sin(t * .45) * 6).toFixed(1));
+
+    // the sea: wave dashes slide, the sun's glitter flickers
+    waves.forEach(function(n, i){
+      n.setAttribute("transform", "translate(" + (Math.sin(t * .5 + i * .8) * 12).toFixed(1) + ",0)");
+    });
+    glint.forEach(function(n, i){
+      n.setAttribute("opacity", (.2 + Math.abs(Math.sin(t * 1.1 + i * .9)) * .55).toFixed(2));
+    });
+
+    // three birds arc across; they pass behind the title plate mid-flight
+    birds.forEach(function(n, i){
+      var p = ((t * .05) + i * .3) % 1.5;             // a gap between passes
+      if (p > 1){ n.setAttribute("opacity", 0); return; }
+      n.setAttribute("opacity", 1);
+      var x = -60 + p * 1020;
+      var y = 244 - Math.sin(p * Math.PI) * 96 + Math.sin(t * 3.2 + i) * 2.5;
+      n.setAttribute("transform",
+        "translate(" + x.toFixed(1) + "," + y.toFixed(1) + ") scale(" + (.78 + i * .2).toFixed(2) + ")");
+    });
+  });
+}
+
+/* ---------------------------------------------------------------
+   4. D3 layer — motion and interaction only.
+   Absent D3, the poster is still complete and readable.
+---------------------------------------------------------------- */
+function withD3(d3){
+  withD3Skyline(d3);
+
+  var cap = d3.select("#ringCap");
+
+  // spokes draw outward from the child at the centre
+  if (!REDUCE){
+    d3.select("#spokes").selectAll("line")
+      .each(function(){
+        var L = this.getTotalLength();
+        d3.select(this).attr("stroke-dasharray", L + " " + L).attr("stroke-dashoffset", L);
+      });
+    d3.select("#nodes").selectAll(".node-g").style("opacity", 0);
+  }
+  var ringSeen = false;
+  var ringObs = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if (!e.isIntersecting || ringSeen) return;
+      ringSeen = true;
+      if (REDUCE) return;
+      d3.select("#spokes").selectAll("line")
+        .transition().delay(function(d, i){ return i * 70; })
+        .duration(520).ease(d3.easeCubicOut)
+        .attr("stroke-dashoffset", 0);
+      d3.select("#nodes").selectAll(".node-g")
+        .transition().delay(function(d, i){ return 160 + i * 70; })
+        .duration(420).ease(d3.easeCubicOut)
+        .style("opacity", 1);
+    });
+  }, { threshold:.2 });
+  var ringEl = document.getElementById("ring");
+  if (ringEl) ringObs.observe(ringEl);
+  // 12s failsafe — force every gated animation to its final state
+  setTimeout(function(){
+    d3.select("#spokes").selectAll("line").attr("stroke-dashoffset", 0);
+    d3.select("#nodes").selectAll(".node-g").style("opacity", 1);
+  }, 12000);
+
+  // hover / focus / tap: lift the zone, dim the rest, swap the caption
+  var color = d3.scaleOrdinal()
+    .domain(ZONES.map(function(d){ return d.key; }))
+    .range(ZONES.map(function(d){ return d.color; }));
+
+  function focusKey(key){
+    d3.select("#nodes").selectAll(".node-g")
+      .transition().duration(180).ease(d3.easeCubicOut)
+      .style("opacity", function(){
+        return (!key || this.getAttribute("data-key") === key) ? 1 : .3;
+      });
+    d3.select("#spokes").selectAll("line")
+      .transition().duration(180).ease(d3.easeCubicOut)
+      .attr("stroke-opacity", function(d, i){
+        return (!key || ZONES[i].key === key) ? 1 : .2;
+      })
+      .attr("stroke-width", function(d, i){
+        return (!key || ZONES[i].key === key) ? 7 : 4;
+      });
+    var t = key ? ZONES.filter(function(d){ return d.key === key; })[0] : ZONES[0];
+    cap.html("<b>" + t.title + "</b> " + t.blurb)
+       .style("color", key ? d3.color(color(key)).darker(1.4) : null);
+  }
+
+  ZONES.forEach(function(t){
+    if (!t.g) return;
+    var sel = d3.select(t.g);
+    sel.on("mouseenter focus", function(){ focusKey(t.key); })
+       .on("mouseleave blur",  function(){ focusKey(null); })
+       .on("click", function(){ focusKey(t.key); });
+    if (!REDUCE){
+      sel.on("mouseenter.scale", function(){
+        d3.select(t.circle).transition().duration(200).ease(d3.easeCubicOut).attr("r", NODE_R + 4);
+      }).on("mouseleave.scale", function(){
+        d3.select(t.circle).transition().duration(200).ease(d3.easeCubicOut).attr("r", NODE_R);
+      });
+    }
+  });
+}
+
+/* ---------------------------------------------------------------
+   5. Three.js — the city assembles block by block.
+   Explanatory motion: the point is that it takes all five zones.
+---------------------------------------------------------------- */
+function withThree(THREE){
+  var canvas = document.getElementById("city3d");
+  var fb = document.getElementById("cityFallback");
+  if (!canvas) return;
+  var W = canvas.clientWidth || 900, H = canvas.clientHeight || 340;
+
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas:canvas, antialias:true, alpha:true });
+  } catch (err) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  renderer.setSize(W, H, false);
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(30, W / H, .1, 100);
+  camera.position.set(0, 2.2, 12);
+  camera.lookAt(0, 1.5, 0);
+
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x0e2a2f, .95));
+  var key = new THREE.DirectionalLight(0xffffff, .85);
+  key.position.set(6, 11, 8);
+  scene.add(key);
+  var rim = new THREE.DirectionalLight(0x8fe3d2, .35);
+  rim.position.set(-7, 4, -6);
+  scene.add(rim);
+
+  var group = new THREE.Group();
+  group.position.y = -1.35;
+  scene.add(group);
+
+  var STEP = .64, parts = [];
+  function track(mesh, edgeMat){
+    parts.push({ mesh:mesh, mat:mesh.material, edge:edgeMat || null, targetY:mesh.position.y });
+  }
+
+  BLOCKS.forEach(function(b){
+    var geo = new THREE.BoxGeometry(b.w, b.h, 1.2);
+    var mat = new THREE.MeshLambertMaterial({ color: BRICK[b.c], transparent:true, opacity:0 });
+    var mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(b.x, b.y * STEP + b.h / 2, 0);
+    var edges = new THREE.LineSegments(
+      new THREE.EdgesGeometry(geo),
+      new THREE.LineBasicMaterial({ color:0xffffff, transparent:true, opacity:0 })
+    );
+    mesh.add(edges);
+    group.add(mesh);
+    track(mesh, edges.material);
+  });
+
+  // the park strip out in front of the city
+  var park = new THREE.Mesh(
+    new THREE.BoxGeometry(9, .18, 1.5),
+    new THREE.MeshLambertMaterial({ color:0x2e8b57, transparent:true, opacity:0 })
+  );
+  park.position.set(0, .09, 1.4);
+  group.add(park);
+  track(park);
+
+  // two trees in the park
+  [-1.72, 1.72].forEach(function(tx){
+    var trunk = new THREE.Mesh(
+      new THREE.CylinderGeometry(.06, .08, .44, 8),
+      new THREE.MeshLambertMaterial({ color:0x7a5233, transparent:true, opacity:0 })
+    );
+    trunk.position.set(tx, .4, 1.5);
+    group.add(trunk);
+    track(trunk);
+
+    var crown = new THREE.Mesh(
+      new THREE.SphereGeometry(.3, 18, 14),
+      new THREE.MeshLambertMaterial({ color:0x7bd389, transparent:true, opacity:0 })
+    );
+    crown.position.set(tx, .78, 1.5);
+    group.add(crown);
+    track(crown);
+
+    [-.2, .2].forEach(function(px){
+      var puff = new THREE.Mesh(
+        new THREE.SphereGeometry(.19, 14, 10),
+        new THREE.MeshLambertMaterial({ color:0x4fb86b, transparent:true, opacity:0 })
+      );
+      puff.position.set(tx + px, .58, 1.55);
+      group.add(puff);
+      track(puff);
+    });
+  });
+
+  parts.forEach(function(p, i){
+    p.delay = i * 40;
+    p.mesh.position.y = p.targetY + 6;
+  });
+
+  var t0 = null, drag = 0, dragging = false, lastX = 0, spin = 0;
+  var DUR = 520;
+  var ease = function(t){ return 1 - Math.pow(1 - t, 3); };
+
+  function frame(now){
+    if (t0 === null) t0 = now;
+    var e = now - t0;
+    parts.forEach(function(p){
+      var t = Math.min(1, Math.max(0, (e - p.delay) / DUR));
+      var k = ease(t);
+      p.mesh.position.y = p.targetY + 6 * (1 - k);
+      p.mat.opacity = k;
+      if (p.edge) p.edge.opacity = k * .5;
+    });
+    if (!REDUCE) spin += (drag - spin) * .08;
+    group.rotation.y = spin + (REDUCE ? 0 : Math.sin(now / 3400) * .2);
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+
+  var handedOver = false;
+  function handOver(){
+    if (handedOver) return;
+    handedOver = true;
+    canvas.style.transition = "opacity 420ms cubic-bezier(0.23,1,0.32,1)";
+    canvas.style.opacity = 1;
+    if (fb){
+      fb.style.transition = "opacity 420ms cubic-bezier(0.23,1,0.32,1)";
+      fb.style.opacity = 0;
+    }
+  }
+
+  var started = false;
+  function start(){
+    if (started) return;
+    started = true;
+    if (REDUCE){
+      parts.forEach(function(p){
+        p.mesh.position.y = p.targetY;
+        p.mat.opacity = 1;
+        if (p.edge) p.edge.opacity = .5;
+      });
+      renderer.render(scene, camera);
+      handOver();
+      return;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Hand over to the 3D canvas here, while every block is still at opacity 0 and the
+  // section is normally still below the fold. Crossfading once the assembly is running
+  // dissolves the *finished* flat city into a near-empty scene, so the city reads as
+  // vanishing and then rebuilding. Both are blank at this point, so the swap is invisible.
+  // Under reduced motion there is no assembly to protect, and start() crossfades straight
+  // from one finished city to the other — swapping early would only add a blank gap.
+  if (!REDUCE){
+    renderer.render(scene, camera);
+    handOver();
+  }
+
+  if ("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ io.unobserve(e.target); start(); } });
+    }, { threshold:.3 });
+    io.observe(canvas);
+    // the flat city is already gone, so guarantee the blocks arrive even if the observer
+    // never fires — same 12s budget the ring uses
+    setTimeout(start, 12000);
+  } else start();
+
+  // drag to turn the city — a spring-ish follow, not a 1:1 tie to the pointer
+  canvas.style.touchAction = "pan-y";
+  canvas.addEventListener("pointerdown", function(ev){
+    dragging = true; lastX = ev.clientX; canvas.setPointerCapture(ev.pointerId);
+  });
+  canvas.addEventListener("pointermove", function(ev){
+    if (!dragging) return;
+    drag += (ev.clientX - lastX) * .008;
+    lastX = ev.clientX;
+  });
+  ["pointerup", "pointercancel"].forEach(function(t){
+    canvas.addEventListener(t, function(){ dragging = false; });
+  });
+
+  addEventListener("resize", function(){
+    var w = canvas.clientWidth, h = canvas.clientHeight;
+    if (!w || !h) return;
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    renderer.setSize(w, h, false);
+  });
+}
+
+/* ---------------------------------------------------------------
+   6. Fit the fixed 900px poster to the viewport
+---------------------------------------------------------------- */
+(function fit(){
+  var wrap = document.getElementById("fit");
+  if (!wrap) return;
+  // full bleed: the 900px poster always spans the viewport, scaling up as well as down.
+  // zoom rather than transform:scale because zoom reflows layout, so the wrapper's height
+  // is correct by construction. transform leaves layout at the unscaled height, which then
+  // has to be mirrored by hand — and that copy desyncs, stranding a blank strip under the footer.
+  function apply(){
+    var w = document.documentElement.clientWidth;
+    if (!w) return;                       // a zero-width viewport would zoom the poster to nothing
+    wrap.style.zoom = w / 900;
+  }
+  apply();
+  addEventListener("resize", apply);
+})();
+
+try { if (window.d3) withD3(window.d3); } catch (e) { /* poster stands on its own */ }
+try { if (window.THREE) withThree(window.THREE); } catch (e) { /* flat city stays */ }
+})();
+</script>
+
+</body>
+</html>
